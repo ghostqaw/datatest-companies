@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Подключение к базе данных с использованием SQLAlchemy
-DATABASE_URL = 'postgresql+psycopg2://postgres:qaz123@localhost:5434/finance_data'
+DATABASE_URL = 'postgresql+psycopg2://postgres:qaz123@db:5434/finance_data'
 engine = create_engine(DATABASE_URL)
 
 PASSWORD = "qaz123"  # Замените на ваш реальный пароль
