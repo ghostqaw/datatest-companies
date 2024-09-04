@@ -1,0 +1,10 @@
+version: '3'
+services:
+  telegram-bot:
+    build: .
+    environment:
+      - DATABASE_URL=postgresql+psycopg2://postgres:qaz123@localhost:5434/finance_data
+      - TELEGRAM_TOKEN=6704503572:AAGBnctYGW-f9di1U8hZYSMb1Mz7vSnpL7w
+    ports:
+      - "80:80"
+    restart: always
