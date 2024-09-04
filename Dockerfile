@@ -1,18 +1,21 @@
-FROM python:3.10-slim
+# Use official Python image as a base
+FROM python:3.11-slim
 
-# Update package lists and install system dependencies
-RUN apt-get update && apt-get install -y \
-    libpq-dev gcc
-
-# Upgrade pip to the latest version
-RUN pip install --upgrade pip
-
+# Set the working directory in the container
 WORKDIR /app
-COPY requirements.txt requirements.txt
 
-# Install Python dependencies
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install required packages
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-COPY . .
+# Expose port if needed (for your bot, this might not be required)
+# EXPOSE 8080
 
+# Define environment variables (optional, if required by the bot)
+# ENV TELEGRAM_TOKEN=<your-bot-token>
+
+# Command to run the bot
 CMD ["python", "data-tg-bot.py"]
